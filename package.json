@@ -1,12 +1,12 @@
 {
-  "name": "gatsby-starter-hello-world",
+  "name": "mark2swag",
   "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
+  "description": "A brand and a community with the goal of uniting passionates for the Mark2 Golfs and Jettas.",
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop",
+    "develop": "GATSBY_GRAPHQL_IDE=playground gatsby develop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "start": "npm run develop",
     "serve": "gatsby serve",
@@ -23,7 +23,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-hello-world"
+    "url": "https://github.com/byvasco/mark2"
   },
   "bugs": {
     "url": "https://github.com/gatsbyjs/gatsby/issues"
