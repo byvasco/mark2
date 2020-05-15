@@ -2,6 +2,7 @@
 title: Andre’s 1991 Golf VRT
 category: Stories
 date: 2020-05-13T04:48:16.460Z
+custom_slug: andres-1991-golf-vrt
 cover: https://mk2swag.s3.eu-west-3.amazonaws.com/stories/andres-mk2-vr6-turbo-from-1991-cover.jpg
 ---
 My name is Andre. I’m from Nuremberg, Germany and I own a ‘91 Mk2 Vr6 Turbo. I own the car for 8 years and it’s my first Volkswagen.
