@@ -1,0 +1,31 @@
+/** 
+ *  Components - Page - About
+ *  Content
+ */
+
+.content {
+  padding-bottom: 120px;
+  
+  .image-container {
+    @include wh(100%, $max-w: $col-4);
+  }
+
+  .text {
+    margin-top: -8px;
+    
+    p + p {
+      margin-top: 8px;
+    }
+  }
+
+  @include mq-max(990) {
+    .grid-2 {
+      @include grid(1fr, $justify-i: center, $gap-r: 56px);
+    }
+
+    .text {
+      max-width: $col-6;
+      order: -1;
+    }
+  }
+}

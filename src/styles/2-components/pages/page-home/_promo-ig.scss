@@ -1,0 +1,40 @@
+/** 
+ *  Components - Home
+ *  Promo IG
+ */
+
+.promo-ig {
+  padding-top: 80px;
+
+  .section-title {
+    max-width: 340px;
+    margin-bottom: 24px;
+    text-align: center;
+  }
+
+  .image-container {
+    margin-top: 72px;
+    @include wh(100%, $max-w: 880px);
+
+    &::after {
+      content: '';
+      display: block;
+      @include wh(100%, 3px);
+      background-color: get-color(text, dark);
+      @include pos($bottom: 0, $left: 0);
+    }
+  }
+
+  @include mq-max($break-tablet) {
+    padding-top: 40px;
+
+    .section-title {
+      margin-bottom: 16px;
+      max-width: 300px;
+    }
+
+    .image-container {
+      margin-top: 40px;
+    }
+  }
+}

@@ -1,0 +1,17 @@
+/** 
+ *  Components - Home
+ *  Hero
+ */
+
+.hero {
+  padding: 80px 0;
+
+  .section-title {
+    max-width: 398px;
+    text-align: center;
+  }
+
+  @include mq-max(768) {
+    padding: 32px 0 48px;
+  }
+}

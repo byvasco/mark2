@@ -1,0 +1,118 @@
+// 
+// Base
+// Mixins
+// 
+
+$images-path: '../images/';
+
+// Sets background properties
+@mixin background($name, $pos-x: center, $pos-y: center, $size: null, $repeat: no-repeat, $color: null) {
+  background: url(#{$images-path}#{$name}) $color $pos-x $pos-y $repeat;
+  background-size: $size;
+}
+
+// Sets all necessary font properties
+@mixin font($size, $line-height, $letter-spacing: null, $weight: null, $family: null, $uppercase: false, $color: null) {
+  font-family: $family;
+  font-size: $size + px;
+  line-height: $line-height + px;
+  @if $letter-spacing { letter-spacing: $letter-spacing + px; }
+  font-weight: $weight;
+  color: $color;
+  @if $uppercase { text-transform: uppercase; }
+}
+
+// Sets width and height, with 'px' as the default unir
+@mixin wh($width, $height: null, $max-w: null, $max-h: null, $min-w: null, $min-h: null) {
+  width: $width;
+  height: $height;
+  max-width: $max-w;
+  min-width: $min-w;
+  max-height: $max-h;
+  min-height: $min-h;
+}
+
+// Sets position, coordinates and z-index value.
+// Defaults to position: absolute
+@mixin pos($top: null, $right: null, $bottom: null, $left: null, $pos: absolute, $z: null) {
+  position: $pos;
+  top: $top;
+  right: $right;
+  bottom: $bottom;
+  left: $left;
+  z-index: $z;
+}
+
+// Sets display to flex, and assigns other properties
+@mixin flex($justify: null, $align: null, $dir: null, $dis: true) {
+  @if $dis {
+    display: flex;
+  }
+
+  flex-direction: $dir;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+// Sets display to grid and assigns other properties
+@mixin grid($cols: null, $rows: null, $gap: 30px, $gap-r: 30px, $justify: null, $justify-i: null, $align: null) {
+  display: grid;
+  column-gap: $gap;
+  row-gap: $gap-r;
+  grid-template-columns: $cols;
+  grid-template-rows: $rows;
+  justify-content: $justify;
+  justify-items: $justify-i;
+  align-items: $align;
+}
+
+// Sets a min-width media query
+@mixin mq-min($size) {
+  @media (min-width: $size+"px") {
+    @content;
+  }
+}
+
+// Sets a max-width media query
+@mixin mq-max($size) {
+  @media (max-width: $size+"px") {
+    @content;
+  }
+}
+
+// Replace text with image
+@mixin replace-text($image, $width: null, $height: null, $pos-x: null, $pos-y: null, $size: null) {
+  text-indent: -999999em;
+  overflow: hidden;
+  text-align: left;
+  display: inline-block;
+  width: $width;
+  height: $height;
+
+  @include background($image, $pos-x, $pos-y, $size);
+}
+
+// Creates icon with or without a mask
+@mixin icon($icon, $width, $height, $icon-width, $icon-height: null, $color: null) {
+  display: inline-block;
+  @include wh($width, $height);
+  
+  @if $color {
+    background-color: $color;
+    -webkit-mask: url('#{$images-path}icons/#{$icon}') no-repeat;
+    -webkit-mask-size: $icon-width, $icon-height;
+    -webkit-mask-position: center;
+    // mask: url('#{$images-path}icons/#{$icon}') no-repeat;
+    // mask-size: 100%;
+    // mask-position: center;
+  } @else {
+    @include background('icons/icon-#{$icon}.svg', $size: 100%);
+  }
+}
+
+// Transform mixin
+@mixin transform($property) {
+  -webkit-transform: $property;
+  -ms-transform: $property;
+  transform: $property;
+}

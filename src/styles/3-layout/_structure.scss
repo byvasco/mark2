@@ -1,0 +1,56 @@
+/**
+ * Layout
+ * Structure
+ */
+
+.container {
+  width: 100%;
+  max-width: calc(#{$container-width} + #{$container-padding * 2});
+  padding: 0 #{$container-padding};
+  margin: auto;
+  position: relative;
+
+  &-narrow {
+    @extend .container;
+    max-width: calc(#{$container-narrow-width} + #{$container-padding * 2});
+  }
+
+  &-small {
+    @extend .container;
+    max-width: calc(#{$container-small-width} + #{$container-padding * 2});
+  }
+
+  &-smaller {
+    @extend .container;
+    max-width: calc(#{$container-smaller-width} + #{$container-padding * 2});
+  }
+}
+
+// Grids structure
+.grid {
+  display: grid;
+  grid-gap: $gap-width;
+
+  &-2 {
+    @extend .grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  &-3 {
+    @extend .grid;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+// Flexbox helpers
+.flex {
+  @include flex();
+
+  &-center {
+    @include flex(center, center);
+  }
+
+  &-col-center {
+    @include flex(center, center, column);
+  }
+}

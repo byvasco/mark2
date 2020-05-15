@@ -1,0 +1,15 @@
+/** 
+ *  Components - Page
+ *  Header
+ */
+
+.page-stories,
+.page-creatives {
+  .cards .container {
+    row-gap: 56px;
+  }
+
+  .cards {
+    padding-bottom: 120px;
+  }
+}

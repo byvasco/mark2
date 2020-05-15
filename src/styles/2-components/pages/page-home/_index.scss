@@ -1,0 +1,11 @@
+// 
+// Components - Home
+// Index
+//
+
+.page-home {
+  @import 'hero';
+  @import 'featured';
+  @import 'section-content';
+  @import 'promo-ig';
+}

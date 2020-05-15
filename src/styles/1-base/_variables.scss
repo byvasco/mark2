@@ -1,0 +1,58 @@
+// 
+// Base
+// Variables
+// 
+
+// Colors
+@function get-color($main, $variation: null, $palette: null) {
+  @if $palette == null {
+    $palette: $colors;
+  }
+
+  @if $variation {
+    @return map-get(map-get($palette, $main), $variation);
+  } @else {
+    @return map-get($palette, $main);
+  }
+}
+
+$colors: (
+  basic: (
+    white: #fff,
+    black: #000
+  ),
+  accent: (
+    primary: #000CBE
+  ),
+  text: (
+    dark: #0C0B11,
+    light: #646367,
+    lighter: #A6A6A8
+  ),
+  border: (
+    primary: #E8E8E9
+  )
+);
+
+//Layout
+$container-padding: 20px;
+$column-width: 80px;
+$gap-width: 30px;
+$col-4: ($column-width * 4) + ($gap-width * 3);
+$col-3: ($column-width * 3) + ($gap-width * 2);
+$col-5: ($column-width * 5) + ($gap-width * 4);
+$col-6: ($column-width * 6) + ($gap-width * 5);
+$col-8: ($column-width * 8) + ($gap-width * 7);
+$col-10: ($column-width * 10) + ($gap-width * 9);
+
+$container-width: 1290px;
+$container-smaller-width: $col-6;
+$container-small-width: $col-8;
+$container-narrow-width: $col-10;
+
+$break-tablet: 768;
+
+
+// Fonts
+$font-titles: 'Barlow Semi Condensed', sans-serif;
+$font-body: 'Lora', serif;

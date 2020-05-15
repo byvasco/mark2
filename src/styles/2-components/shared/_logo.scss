@@ -1,0 +1,12 @@
+/** 
+ *  Components - Shared
+ *  Logo
+ */
+
+.logo {
+  @include replace-text('logos/logo.svg', 76px, 66px, $size: cover);
+
+  &-white {
+    @include replace-text('logos/logo-white.svg', 76px, 66px);
+  }
+}

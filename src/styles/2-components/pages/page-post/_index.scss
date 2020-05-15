@@ -1,0 +1,11 @@
+// 
+// Components - Pages - Post
+// Index
+//
+
+.page-post {
+  @import 'header';
+  @import 'content';
+  @import 'footer';
+  @import 'more';
+}

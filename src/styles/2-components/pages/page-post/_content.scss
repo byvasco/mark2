@@ -1,0 +1,41 @@
+/** 
+ *  Components - Page Post
+ *  Content
+ */
+
+.post-content {
+  padding-bottom: 80px;
+  
+  p {
+    @extend .body-long;
+
+    & + p {
+      margin-top: 8px;
+    }
+  }
+
+  h4 {
+    @extend .title-4;
+    margin: 72px 0 16px;
+  }
+
+  img {
+    margin: 40px 0;
+  }
+
+  a {
+    @extend .link;
+  }
+
+  @include mq-max($break-tablet) {
+    padding-bottom: 56px;
+    
+    h4 {
+      margin: 56px 0 16px;
+    }
+
+    img {
+      margin: 24px 0;
+    }
+  }
+}

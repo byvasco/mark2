@@ -1,0 +1,22 @@
+/** 
+ *  Components - Page - Stories
+ *  Cards
+ */
+
+.cards-list {
+  @include mq-max(990) {
+    .cards {
+      @include grid(1fr 1fr, $justify-i: center, $gap: 20px);
+
+      .card {
+        max-width: $col-4;
+      }
+    }
+  }
+
+  @include mq-max(660) {
+    .cards {
+      @include grid(1fr);
+    }
+  }
+}

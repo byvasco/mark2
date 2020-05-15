@@ -1,0 +1,44 @@
+/** 
+ *  Components - Site
+ *  Header
+ */
+
+.header-main {
+  padding: 80px 0;
+
+  .container {
+    align-items: center;
+  }
+
+  .nav-main {
+    justify-self: center;
+  }
+
+  .nav-secondary {
+    justify-self: end;
+  }
+
+  .nav-main,
+  .nav-secondary {
+    a:not(:last-child) {
+      margin-right: 48px;
+    }
+  }
+
+  @include mq-max(768) {
+    padding: 48px 0;
+
+    .nav-main,
+    .nav-secondary {
+      display: none;
+    }
+
+    .container {
+      @include grid(1fr, $justify-i: center);
+    }
+
+    .logo {
+      @include wh(64px, 56px);
+    }
+  }
+}

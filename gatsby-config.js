@@ -5,5 +5,36 @@
  */
 
 module.exports = {
-  /* Your site config here */
+  plugins: [
+    'gatsby-plugin-sass',
+    'gatsby-plugin-catch-links',
+    'gatsby-plugin-react-helmet',
+    'gatsby-transformer-sharp',
+    'gatsby-plugin-sharp',
+    'gatsby-plugin-react-helmet',
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/src/images`,
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/content/stories`,
+        name: 'stories',
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        path: `${__dirname}/content/creatives`,
+        name: 'creatives',
+      },
+    },
+    {
+      resolve: 'gatsby-transformer-remark',
+      plugins: []
+    }
+  ]
 }

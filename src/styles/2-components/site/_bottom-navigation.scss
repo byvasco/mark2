@@ -1,0 +1,37 @@
+/** 
+ *  Components - Site
+ *  Bottom Navigation
+ */
+
+.bottom-navigation {
+  display: none;
+
+  @include mq-max($break-tablet){
+    display: block;
+    @include pos($bottom: 0, $left: 0, $pos: fixed, $z: 9999);
+    width: 100%;
+    background-color: white;
+    border-top: 2px solid get-color(text, dark);
+
+    .links {
+      @include flex($justify: center);
+    }
+
+    .menu-link {
+      padding: 24px 20px;
+
+      &.active {
+        color: get-color(accent, primary);
+        position: relative;
+        @include flex($justify: center);
+
+        &::after {
+          content: '';
+          display: block;
+          @include wh(16px, 2px);
+          background-color: get-color(accent, primary);
+          @include pos($bottom: 18px);
+        }
+      }
+    }}
+}

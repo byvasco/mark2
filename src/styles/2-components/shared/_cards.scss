@@ -1,0 +1,70 @@
+/** 
+ *  Components - Shared
+ *  Card
+ */
+
+.card {
+  &-post.small {
+    max-width: $col-4;
+
+    .details {
+      padding: 20px 16px 24px;
+    }
+
+    .card-cover {
+      img {
+        margin-bottom: -8px;
+      }
+    }
+
+    .card-category {
+      margin-bottom: 10px;
+    }
+
+    .card-title {
+      max-width: 240px;
+    }
+  }
+
+  &-post.half {
+    .details {
+      padding: 24px 24px 40px;
+    }
+
+    .card-cover {
+      img {
+        margin-bottom: -8px;
+      }
+    }
+
+    .card-category {
+      margin-bottom: 14px;
+    }
+
+    .card-title {
+      max-width: $col-4;
+    }
+  }
+
+  @include mq-max($break-tablet) {
+    &-post.small {
+      .details {
+        padding: 14px 12px 20px;
+      }
+
+      .card-title {
+        max-width: 200px;
+      }
+    }
+
+    &-post.half {
+      .details {
+        padding: 16px 20px 24px;
+      }
+
+      .card-category {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}

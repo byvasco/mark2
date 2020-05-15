@@ -1,0 +1,31 @@
+/** 
+ *  Components - Site
+ *  Footer
+ */
+
+.footer-main {
+  padding: 80px 0;
+  background-color: get-color(text, dark);
+
+  * {
+    color: get-color(basic, white);
+  }
+
+  .nav-main {
+    margin: 48px 0;
+
+    a:not(:last-child) {
+      margin-right: 48px;
+    }
+  }
+
+  .social-links {
+    .facebook { @include icon('social/icon-facebook.svg', 40px, 40px, 10px, $color: white); }
+    .instagram { @include icon('social/icon-instagram.svg', 40px, 40px, 19px, $color: white); }
+
+    &:not(:last-child) {
+      margin-right: 16px;
+    }
+  }
+
+}

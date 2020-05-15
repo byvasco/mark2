@@ -1,0 +1,33 @@
+// 
+// Base
+// Base
+// 
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  text-decoration: none;
+  color: get-color(text, dark);
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+ -webkit-font-smoothing: antialiased;
+ overflow-x: hidden;
+ font-family: $font-body;
+}
+
+img {
+  max-width: 100%;
+}
+
+ul,
+li {
+  list-style-type: none;
+}

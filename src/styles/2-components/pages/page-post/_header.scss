@@ -1,0 +1,53 @@
+/** 
+ *  Components - Page Post
+ *  Header
+ */
+
+.post-header {
+  @include grid(1fr 1fr, $align: center);
+  padding: 0 0 80px 0;
+
+  .details {
+    max-width: $col-4;
+    justify-self: center;
+  }
+
+  .post-category {
+    margin-bottom: 32px;
+  }
+
+  .post-title {
+    max-width: 400px;
+  }
+
+  @include mq-max(990) {
+    @include grid(1fr, $justify-i: center, $gap-r: 40px);
+    padding: 40px 0 48px 0;
+
+    .post-cover {
+      max-width: $col-6;
+      order: 1;
+    }
+  }
+
+  @include mq-max($break-tablet) {
+    .details {
+      justify-self: start;
+    }
+
+    .post-category {
+      margin-bottom: 16px;
+    }
+
+    .post-title {
+      max-width: 240px;
+    }
+  }
+
+  @include mq-max(660) {
+    .post-cover img {
+      max-width: calc(100% + 40px);
+      margin-left: -20px;
+    }
+  }
+}

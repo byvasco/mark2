@@ -1,0 +1,41 @@
+/** 
+ *  Components - Page Post
+ *  Footer
+ */
+
+.post-footer {
+  padding: 40px 0;
+  align-items: center;
+
+  .actions {
+    justify-self: end;
+    @include flex();
+
+    li:first-child {
+      margin-right: 32px;
+    }
+  }
+
+  .action {
+    @include flex($align: center);
+
+    &::before{
+      content: '';
+      display: block;
+      @include wh(24px, 24px);
+      margin-right: 8px;
+    }
+
+    &.facebook::before { @include background('icons/social/icon-share-facebook.svg'); }
+    &.twitter::before { @include background('icons/social/icon-share-twitter.svg'); }
+  }
+
+  @include mq-max(480) {
+    @include grid(1fr, $justify-i: center);
+    padding: 32px 0;
+
+    .actions {
+      justify-self: center;
+    }
+  }
+}

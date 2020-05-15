@@ -1,0 +1,64 @@
+/** 
+ *  Components - Home
+ *  Featured
+ */
+
+.featured {
+  @include grid(1fr 1fr, $align: center);
+
+  .details {
+    max-width: $col-4;
+    justify-self: center;
+  }
+
+  .post-category {
+    margin-bottom: 32px;
+  }
+
+  .post-title {
+    max-width: 400px;
+    margin-bottom: 24px;
+  }
+
+  .post-excerpt {
+    position: relative;
+    margin-bottom: 24px;
+
+    &::after {
+      content: '';
+      display: block;
+      @include wh(100%, 100%);
+      @include pos(0, $left: 0);
+      background-image: linear-gradient(180deg, rgba(255,255,255,0.08) 1%, rgba(255,255,255,0.80) 99%);
+    }
+  }
+
+  @include mq-max(990) {
+    @include grid(1fr, $justify-i: center);
+
+    .post-cover {
+      max-width: $col-6;
+    }
+
+    .post-category {
+      margin-bottom: 20px;
+    }
+
+    .post-title {
+      max-width: 240px;
+      margin-bottom: 16px;
+    }
+
+    .post-excerpt {
+      margin-bottom: 16px;
+    }
+  }
+
+  @include mq-max($break-tablet) {
+    row-gap: 26px;
+    
+    .details {
+      padding: 0 32px;
+    }
+  }
+}
