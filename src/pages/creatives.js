@@ -1,6 +1,6 @@
 import React from 'react'
 import Layout from '../components/layouts/page'
-import { graphql, Link } from 'gatsby'
+import { graphql } from 'gatsby'
 import Card from '../components/card'
 
 export default ({ data }) => {
