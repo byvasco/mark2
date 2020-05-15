@@ -17,7 +17,7 @@ export default ({ data }) => {
                 cover = {post.frontmatter.cover}
                 title = {post.frontmatter.title}
                 category = {post.frontmatter.category}
-                slug = {post.fields.slug}
+                slug = {post.frontmatter.custom_slug ? post.frontmatter.custom_slug : post.fields.slug}
               />
             ))
           }
@@ -43,6 +43,7 @@ export const query = graphql`
             title
             cover
             category
+            custom_slug
           }
 
           fields {

@@ -58,7 +58,7 @@ const PostTemplate = ({ data }) => {
               cover = {prevStory.frontmatter.cover}
               title = {prevStory.frontmatter.title}
               category = {prevStory.frontmatter.category}
-              slug = {prevStory.fields.slug}
+              slug = {prevStory.frontmatter.custom_slug ? prevStory.frontmatter.custom_slug : prevStory.fields.slug}
             />
 
             <Card
@@ -66,7 +66,7 @@ const PostTemplate = ({ data }) => {
               cover = {nextStory.frontmatter.cover}
               title = {nextStory.frontmatter.title}
               category = {nextStory.frontmatter.category}
-              slug = {nextStory.fields.slug}
+              slug = {nextStory.frontmatter.custom_slug ? nextStory.frontmatter.custom_slug : nextStory.fields.slug}
             />
           </div>
         </div>
@@ -91,6 +91,7 @@ export const query = graphql`
         title
         cover
         category
+        custom_slug
       }
 
       fields {
@@ -103,6 +104,7 @@ export const query = graphql`
         title
         cover
         category
+        custom_slug
       }
 
       fields {

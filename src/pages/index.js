@@ -23,7 +23,7 @@ const Home = ({ data }) => {
           <h2 className="section-title title-5">Recent Stories</h2>
 
           <div className="cards">
-            <Link to={latestStory.fields.slug} className="featured">
+            <Link to={latestStory.frontmatter.custom_slug ? latestStory.frontmatter.custom_slug : latestStory.fields.slug} className="featured">
               <figure className="post-cover">
                 <img src={latestStory.frontmatter.cover} alt={latestStory.frontmatter.title} />
               </figure>
@@ -45,7 +45,7 @@ const Home = ({ data }) => {
                     cover = {post.frontmatter.cover}
                     title = {post.frontmatter.title}
                     category = {post.frontmatter.category}
-                    slug = {post.fields.slug}
+                    slug = {post.frontmatter.custom_slug ? post.frontmatter.custom_slug : post.fields.slug}
                   />
                 ))
               }
@@ -80,7 +80,7 @@ const Home = ({ data }) => {
                   cover = {post.frontmatter.cover}
                   title = {post.frontmatter.title}
                   category = {post.frontmatter.category}
-                  slug = {post.fields.slug}
+                  slug = {post.frontmatter.custom_slug ? post.frontmatter.custom_slug : post.fields.slug}
                 />
               ))
             }
@@ -102,6 +102,7 @@ export const query = graphql`
             title
             cover
             category
+            custom_slug
           }
 
           excerpt

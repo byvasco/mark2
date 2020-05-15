@@ -2,6 +2,7 @@
 title: Nick’s 1991 Golf VR6
 category: Stories
 date: 2020-05-14T04:13:30.925Z
+custom_slug: nicks-1991-golf-vr6
 cover: https://mk2swag.s3.eu-west-3.amazonaws.com/stories/nicks-1991-vr6-itb-golf-cover.jpg
 ---
 My name is Nick, I’m from Staten Island, NY and I own this 1991 MK2 Golf. It was originally the [S&L Imports 1.8t orange MK2](https://forums.vwvortex.com/showthread.php?4775151-s-l-imports) built back in 2004. I bought it off someone back in 2011 with the intentions of enjoying a built car but that didn’t last long.

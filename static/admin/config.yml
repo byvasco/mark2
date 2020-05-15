@@ -16,10 +16,18 @@ collections:
     fields:
       - name: title
         label: Title
+
+      - name: category
+        label: Category
+        widget: select
+        options: [Stories, Creatives]
       
       - name: date
         label: Date
         widget: datetime
+      
+      - name: custom_slug
+        label: Custom Slug
 
       - name: cover
         label: Cover
