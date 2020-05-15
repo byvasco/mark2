@@ -1,5 +1,6 @@
 ---
 title: Nick’s 1991 Golf VR6
+category: Stories
 date: 2020-05-14T04:13:30.925Z
 cover: https://mk2swag.s3.eu-west-3.amazonaws.com/stories/nicks-1991-vr6-itb-golf-cover.jpg
 ---
