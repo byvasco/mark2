@@ -19,12 +19,26 @@
     margin: 72px 0 16px;
   }
 
-  img {
+  figure {
     margin: 40px 0;
+
+    & + figure {
+      margin-top: -24px; 
+    }
+
+    img {
+      margin-bottom: -4px;
+    }
   }
 
   a {
     @extend .link;
+  }
+
+  hr {
+    border: 0;
+    border-top: 1px solid get-color(border, primary);
+    margin: 48px 0;
   }
 
   @include mq-max($break-tablet) {
