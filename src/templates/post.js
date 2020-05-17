@@ -15,7 +15,7 @@ const PostTemplate = ({ data }) => {
   const previousStory = data.previous.postBy;
 
   return (
-    <Layout className="post" name="post" title="">
+    <Layout className="post" name="post" title={title} image={cover}>
       <div className="container">
         <header className="post-header">
           <figure className="post-cover">

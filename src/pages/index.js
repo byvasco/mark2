@@ -13,7 +13,7 @@ const Home = ({ data }) => {
   
 
   return (
-    <Layout name="home">
+    <Layout name="home" title="Home" image={latestStory.featuredImage.sourceUrl}>
       <section className="hero">
         <div className="container flex-center">
           <h1 className="section-title subtitle-1">Uniting passionates for the <span>Mark2 Golf and Jetta</span>.</h1>
