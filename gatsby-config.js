@@ -36,6 +36,14 @@ module.exports = {
     {
       resolve: 'gatsby-transformer-remark',
       plugins: []
+    },
+    {
+      resolve: 'gatsby-source-graphql',
+      options: {
+        typeName: 'Mark2CMS',
+        fieldName: 'mark2cms',
+        url: 'https://cms.mk2swag.com/graphql'
+      }
     }
   ]
 }

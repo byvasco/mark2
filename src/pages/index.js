@@ -5,10 +5,12 @@ import Layout from '../components/layouts/default'
 import Card from '../components/card'
 
 const Home = ({ data }) => {
-  const latestStory = data.latestStory.edges[0].node;
-  const recentStories = data.recentStories.edges;
-  const recentCreatives = data.recentCreatives.edges;
+  const latestStory = data.recentStories.posts.edges[0].node;
+  const recentStories = data.recentStories.posts.edges.slice(-3);
+  const recentCreatives = data.recentCreatives.posts.edges;
+
   const imagePromoIg = data.imagePromoIg.childImageSharp.fluid;
+  
 
   return (
     <Layout name="home">
@@ -23,15 +25,15 @@ const Home = ({ data }) => {
           <h2 className="section-title title-5">Recent Stories</h2>
 
           <div className="cards">
-            <Link to={latestStory.fields.slug} className="featured">
+            <Link to={latestStory.uri} className="featured">
               <figure className="post-cover">
-                <img src={latestStory.frontmatter.cover} alt={latestStory.frontmatter.title} />
+                <img src={latestStory.featuredImage.sourceUrl} alt={latestStory.title} />
               </figure>
               
               <div className="details">
-                <p className="post-category caption-2">{latestStory.frontmatter.category}</p>
-                <h3 className="post-title title-2">{latestStory.frontmatter.title}</h3>
-                <p className="post-excerpt body">{latestStory.excerpt}</p>
+                <Link to={`/${latestStory.categories.edges[0].node.slug}/`} className="post-category caption-2">{latestStory.categories.edges[0].node.name}</Link>
+                <h3 className="post-title title-2">{latestStory.title}</h3>
+                <p className="post-excerpt body" dangerouslySetInnerHTML={{ __html: latestStory.excerpt }}></p>
                 <p className="action button-1 underline">Read Story</p>
               </div>
             </Link>
@@ -42,10 +44,10 @@ const Home = ({ data }) => {
                 recentStories.map(({ node: post }) => (
                   <Card
                     type = "small"
-                    cover = {post.frontmatter.cover}
-                    title = {post.frontmatter.title}
-                    category = {post.frontmatter.category}
-                    slug = {post.fields.slug}
+                    cover = {post.featuredImage.sourceUrl}
+                    title = {post.title}
+                    category = {post.categories.edges[0].node.name}
+                    slug = {post.uri}
                   />
                 ))
               }
@@ -77,10 +79,10 @@ const Home = ({ data }) => {
               recentCreatives.map(({ node: post }) => (
                 <Card
                   type = "half"
-                  cover = {post.frontmatter.cover}
-                  title = {post.frontmatter.title}
-                  category = {post.frontmatter.category}
-                  slug = {post.fields.slug}
+                  cover = {post.featuredImage.sourceUrl}
+                  title = {post.title}
+                  category = {post.categories.edges[0].node.name}
+                  slug = {post.uri}
                 />
               ))
             }
@@ -95,68 +97,46 @@ const Home = ({ data }) => {
 
 export const query = graphql`
   query {
-    latestStory: allMarkdownRemark (limit: 1, sort: { fields: [frontmatter___date], order: DESC }) {
-      edges {
-        node {
-          frontmatter {
+    recentStories: mark2cms {
+      posts(last: 4, where: {categoryName: "stories"}) {
+        edges {
+          node {
             title
-            cover
-            category
-          }
-
-          excerpt
-
-          fields {
-            slug
+            featuredImage {
+              sourceUrl
+            }
+            categories(first: 1) {
+              edges {
+                node {
+                  name
+                  slug
+                }
+              }
+            }
+            excerpt
+            uri
           }
         }
       }
     }
 
-    recentStories: allMarkdownRemark (
-      skip: 1,
-      limit: 3,
-      sort: { fields: [frontmatter___date], order: DESC }
-      filter: {
-        fileAbsolutePath: {
-          regex: "/(stories)/"
-        }
-      }
-      ) {
-      edges {
-        node {
-          frontmatter {
+    recentCreatives: mark2cms {
+      posts(last: 2, where: {categoryName: "creatives"}) {
+        edges {
+          node {
             title
-            cover
-            category
-          }
-
-          fields {
-            slug
-          }
-        }
-      }
-    }
-
-    recentCreatives: allMarkdownRemark (
-      limit: 2,
-      sort: { fields: [frontmatter___date], order: DESC },
-      filter: {
-        fileAbsolutePath: {
-          regex: "/(creatives)/"
-        }
-      }
-    ) {
-      edges {
-        node {
-          frontmatter {
-            title
-            cover
-            category
-          }
-
-          fields {
-            slug
+            featuredImage {
+              sourceUrl
+            }
+            categories(first: 1) {
+              edges {
+                node {
+                  name
+                  slug
+                }
+              }
+            }
+            uri
           }
         }
       }

@@ -2,54 +2,32 @@ const path = require('path');
 const { createFilePath } = require('gatsby-source-filesystem');
 
 // Stories
-exports.onCreateNode = ({ node, getNode, actions }) => {
-  const { createNodeField } = actions;
+// exports.onCreateNode = ({ node, getNode, actions }) => {
+//   const { createNodeField } = actions;
 
-  if (node.internal.type === `MarkdownRemark`) {
-    const slug = createFilePath({ node, getNode, basePath: 'stories' });
+//   if (node.internal.type === `MarkdownRemark`) {
+//     const slug = createFilePath({ node, getNode, basePath: 'stories' });
 
-    createNodeField({
-      node,
-      name: 'slug',
-      value: slug
-    })
-  }
-}
+//     createNodeField({
+//       node,
+//       name: 'slug',
+//       value: slug
+//     })
+//   }
+// }
 
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
   const result = await graphql(`
     query {
-      stories: allMarkdownRemark (
-        sort: { fields: [frontmatter___date], order: DESC },
-        filter: {
-          fileAbsolutePath: {
-            regex: "/(stories)/"
-          }
-        }
-      ) {
-        edges {
-          node {
-            fields {
+      stories: mark2cms {
+        posts {
+          edges {
+            node {
               slug
-            }
-          }
-        }
-      }
-
-      creatives: allMarkdownRemark (
-        sort: { fields: [frontmatter___date], order: DESC },
-        filter: {
-          fileAbsolutePath: {
-            regex: "/(creatives)/"
-          }
-        }
-      ) {
-        edges {
-          node {
-            fields {
-              slug
+              uri
+              id
             }
           }
         }
@@ -57,29 +35,18 @@ exports.createPages = async ({ graphql, actions }) => {
     }
   `);
 
-  const stories = result.data.stories.edges;
-  const creatives = result.data.creatives.edges;
+  const stories = result.data.stories.posts.edges;
+  
   
   stories.forEach(({ node }, index) => {    
     createPage({
-      path: node.fields.slug,
+      path: node.uri,
       component: path.resolve('./src/templates/post.js'),
       context: {
-        slug: node.fields.slug,
-        slugNext: index === stories.length - 1 ? stories[0].node.fields.slug : stories[index + 1].node.fields.slug,
-        slugPrev: index === 0 ? stories[stories.length - 1].node.fields.slug : stories[index - 1].node.fields.slug,
-      }
-    });
-  });
-
-  creatives.forEach(({ node }, index) => {    
-    createPage({
-      path: node.fields.slug,
-      component: path.resolve('./src/templates/post.js'),
-      context: {
-        slug: node.fields.slug,
-        slugNext: index === creatives.length - 1 ? creatives[0].node.fields.slug : creatives[index + 1].node.fields.slug,
-        slugPrev: index === 0 ? creatives[creatives.length - 1].node.fields.slug : creatives[index - 1].node.fields.slug,
+        slug: node.slug,
+        id: node.id,
+        slugNext: index === stories.length - 1 ? stories[0].node.slug : stories[index + 1].node.slug,
+        slugPrev: index === 0 ? stories[stories.length - 1].node.slug : stories[index - 1].node.slug,
       }
     });
   });
@@ -87,16 +54,16 @@ exports.createPages = async ({ graphql, actions }) => {
 
 
 // Creatives
-exports.onCreateNode = ({ node, getNode, actions }) => {
-  const { createNodeField } = actions;
+// exports.onCreateNode = ({ node, getNode, actions }) => {
+//   const { createNodeField } = actions;
 
-  if (node.internal.type === `MarkdownRemark`) {
-    const slug = createFilePath({ node, getNode, basePath: 'creatives' });
+//   if (node.internal.type === `MarkdownRemark`) {
+//     const slug = createFilePath({ node, getNode, basePath: 'creatives' });
 
-    createNodeField({
-      node,
-      name: 'slug',
-      value: slug
-    })
-  }
-}
+//     createNodeField({
+//       node,
+//       name: 'slug',
+//       value: slug
+//     })
+//   }
+// }

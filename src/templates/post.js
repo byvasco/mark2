@@ -4,16 +4,18 @@ import { Link, graphql } from 'gatsby';
 import Card from '../components/card';
 
 const PostTemplate = ({ data }) => {
-  const post = data.post;
-  const cover = post.frontmatter.cover;
-  const title = post.frontmatter.title;
-  const category = post.frontmatter.category;
+  console.log(data)  
 
-  const nextStory = data.next;
-  const prevStory = data.prev;
+  const post = data.post.postBy;
+  const cover = post.featuredImage.sourceUrl;
+  const title = post.title;
+  const category = post.categories.edges[0].node;
+
+  const nextStory = data.next.postBy;
+  const previousStory = data.previous.postBy;
 
   return (
-    <Layout className="post" name="post" title={title}>
+    <Layout className="post" name="post" title="">
       <div className="container">
         <header className="post-header">
           <figure className="post-cover">
@@ -21,7 +23,7 @@ const PostTemplate = ({ data }) => {
           </figure>
 
           <div className="details">
-            <Link to={`/${category.toLowerCase()}/`} className="post-category caption-2">{category}</Link>
+            <Link to={`/${category.slug}/`} className="post-category caption-2">{category.name}</Link>
 
             <h1 className="post-title title-1">{title}</h1>
           </div>
@@ -29,7 +31,7 @@ const PostTemplate = ({ data }) => {
       </div>
 
       <div className="container-smaller">
-        <div className="post-content" dangerouslySetInnerHTML={{ __html: post.html }} />
+        <div className="post-content" dangerouslySetInnerHTML={{ __html: post.content }} />
       </div>
 
       <div className="container-smaller">
@@ -55,18 +57,18 @@ const PostTemplate = ({ data }) => {
           <div className="cards grid-2">
             <Card
               type = "small"
-              cover = {prevStory.frontmatter.cover}
-              title = {prevStory.frontmatter.title}
-              category = {prevStory.frontmatter.category}
-              slug = {prevStory.fields.slug}
+              cover = {previousStory.featuredImage.sourceUrl}
+              title = {previousStory.title}
+              category = {previousStory.categories.edges[0].node.name}
+              slug = {previousStory.uri}
             />
 
             <Card
               type = "small"
-              cover = {nextStory.frontmatter.cover}
-              title = {nextStory.frontmatter.title}
-              category = {nextStory.frontmatter.category}
-              slug = {nextStory.fields.slug}
+              cover = {nextStory.featuredImage.sourceUrl}
+              title = {nextStory.title}
+              category = {nextStory.categories.edges[0].node.name}
+              slug = {nextStory.uri}
             />
           </div>
         </div>
@@ -76,37 +78,59 @@ const PostTemplate = ({ data }) => {
 }
 
 export const query = graphql`
-  query($slug: String!, $slugNext: String!, $slugPrev: String!) {
-    post: markdownRemark(fields: { slug: { eq: $slug } }) {
-      html
-      frontmatter {
-        cover
+  query($slug: String!, $slugPrev: String!, $slugNext: String!) {
+    post: mark2cms {
+      postBy(slug: $slug) {
         title
-        category
+        featuredImage {
+          sourceUrl
+        }
+        categories(first: 1) {
+          edges {
+            node {
+              name
+              slug
+            }
+          }
+        }
+        content
+        id
       }
     }
 
-    next: markdownRemark(fields: { slug: { eq: $slugNext } }) {
-      frontmatter {
+    next: mark2cms {
+      postBy(slug: $slugNext) {
         title
-        cover
-        category
-      }
-
-      fields {
-        slug
+        featuredImage {
+          sourceUrl
+        }
+        categories(first: 1) {
+          edges {
+            node {
+              name
+              slug
+            }
+          }
+        }
+        uri
       }
     }
 
-    prev: markdownRemark(fields: { slug: { eq: $slugPrev } }) {
-      frontmatter {
+    previous: mark2cms {
+      postBy(slug: $slugPrev) {
         title
-        cover
-        category
-      }
-
-      fields {
-        slug
+        featuredImage {
+          sourceUrl
+        }
+        categories(first: 1) {
+          edges {
+            node {
+              name
+              slug
+            }
+          }
+        }
+        uri
       }
     }
   }

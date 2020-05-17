@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 import Card from '../components/card'
 
 export default ({ data }) => {
-  const stories = data.allMarkdownRemark.edges;
+  const stories = data.mark2cms.posts.edges;
   
   return (
     <Layout name="stories" title="Stories" intro="There’s a story with every ride. These are the ones <span>from our community</span>.">
@@ -14,10 +14,10 @@ export default ({ data }) => {
             stories.map(({ node: post }) => (
               <Card
                 type = "small"
-                cover = {post.frontmatter.cover}
-                title = {post.frontmatter.title}
-                category = {post.frontmatter.category}
-                slug = {post.fields.slug}
+                cover = {post.featuredImage.sourceUrl}
+                title = {post.title}
+                category = {post.categories.edges[0].node.name}
+                slug = {post.uri}
               />
             ))
           }
@@ -29,24 +29,23 @@ export default ({ data }) => {
 
 export const query = graphql`
   query {
-    allMarkdownRemark (
-      sort: { fields: [frontmatter___date], order: DESC },
-      filter: {
-        fileAbsolutePath: {
-          regex: "/(stories)/"
-        }
-      }
-      ) {
-      edges {
-        node {
-          frontmatter {
+    mark2cms {
+      posts(where: {categoryName: "stories"}) {
+        edges {
+          node {
             title
-            cover
-            category
-          }
-
-          fields {
-            slug
+            featuredImage {
+              sourceUrl
+            }
+            categories(first: 1) {
+              edges {
+                node {
+                  name
+                  slug
+                }
+              }
+            }
+            uri
           }
         }
       }
