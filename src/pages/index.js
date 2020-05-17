@@ -98,7 +98,7 @@ const Home = ({ data }) => {
 export const query = graphql`
   query {
     recentStories: mark2cms {
-      posts(last: 4, where: {categoryName: "stories"}) {
+      posts(first: 4, where: {categoryName: "stories"}) {
         edges {
           node {
             title

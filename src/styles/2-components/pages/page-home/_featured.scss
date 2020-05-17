@@ -23,6 +23,8 @@
   .post-excerpt {
     position: relative;
     margin-bottom: 24px;
+    max-height: 114px;
+    overflow: hidden;
 
     &::after {
       content: '';
@@ -45,7 +47,6 @@
     }
 
     .post-title {
-      max-width: 240px;
       margin-bottom: 16px;
     }
 
@@ -59,6 +60,10 @@
     
     .details {
       padding: 0 32px;
+    }
+
+    .post-title {
+      max-width: 240px;
     }
   }
 }
