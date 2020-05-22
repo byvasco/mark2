@@ -8,8 +8,8 @@ const Footer = () => {
         <Link to="/" className="logo-white">Mark2 Swag</Link>
 
         <nav className="nav-main">
-          <Link to="/" className="menu-link button-1">Stories</Link>
-          <Link to="/" className="menu-link button-1">Creatives</Link>
+          <Link to="/stories/" className="menu-link button-1">Stories</Link>
+          <Link to="/creatives/" className="menu-link button-1">Creatives</Link>
         </nav>
 
         <div className="social-links">

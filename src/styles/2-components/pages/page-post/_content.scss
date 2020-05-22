@@ -28,6 +28,15 @@
 
     img {
       margin-bottom: -4px;
+      cursor: zoom-in;
+    }
+  }
+
+  .blocks-gallery-grid {
+    @include grid(1fr 1fr, $gap: 16px, $gap-r: 16px);
+
+    figure {
+      margin: 0;
     }
   }
 

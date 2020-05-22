@@ -1,0 +1,17 @@
+/** 
+ *  Components - Page Post
+ *  Image Modal
+ */
+
+.image-modal {
+  @include pos(0, $left: 0, $z: 999, $pos: fixed);
+  @include wh(100%, 100%);
+  @include flex(center, center);
+  padding: 0 20px;
+  background-color: white;
+  cursor: zoom-out;
+
+  img {
+    @include wh(100%, $max-w: $col-7);
+  }
+}
