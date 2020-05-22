@@ -86,6 +86,8 @@ class PostTemplate extends Component {
             />
           }
           <div className="post-content">
+            <p className="subtitle-2">{this.post.intro}</p>
+            
             {parse(this.post.content, {
               replace: function(node) {
                 if (node.name === 'img') {

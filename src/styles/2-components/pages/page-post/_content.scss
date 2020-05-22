@@ -7,7 +7,9 @@
   padding-bottom: 80px;
   
   p {
-    @extend .body-long;
+    &:not(.subtitle-2) {
+      @extend .body-long;
+    }
 
     & + p {
       margin-top: 8px;
