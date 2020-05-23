@@ -17,6 +17,7 @@ class PostTemplate extends Component {
       cover: props.data.post.postBy.featuredImage.sourceUrl,
       intro: props.data.post.postBy.postHeader.intro,
       content: props.data.post.postBy.content,
+      authors: props.data.post.postBy.postFooter.authors,
       category: props.data.post.postBy.categories.edges[0].node,
     }
 
@@ -59,6 +60,7 @@ class PostTemplate extends Component {
 
   render() {
     const handleOpenImage = this.handleOpenImage;
+    const authors = this.post.authors;
     
     return (
       <Layout className="post" name="post" title={this.post.title} image={this.post.cover}>
@@ -86,7 +88,7 @@ class PostTemplate extends Component {
             />
           }
           <div className="post-content">
-            <p className="subtitle-2">{this.post.intro}</p>
+            {this.post.intro !== null && <p className="subtitle-2">{this.post.intro}</p>}
             
             {parse(this.post.content, {
               replace: function(node) {
@@ -99,6 +101,10 @@ class PostTemplate extends Component {
                 }
               }
             })}
+
+            <div className="post-authors">
+              {parse(this.post.authors)}
+            </div>
           </div>
         </div>
 
@@ -164,6 +170,9 @@ export const query = graphql`
         }
         postHeader {
           intro
+        }
+        postFooter {
+          authors
         }
         content
         id

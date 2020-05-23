@@ -52,6 +52,12 @@
     margin: 48px 0;
   }
 
+  .post-authors {
+    padding-top: 56px;
+    margin-top: 56px;
+    border-top: 1px solid get-color(border, primary);
+  }
+
   @include mq-max($break-tablet) {
     padding-bottom: 56px;
     
