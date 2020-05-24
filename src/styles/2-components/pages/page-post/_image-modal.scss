@@ -14,4 +14,14 @@
   img {
     @include wh(100%, $max-w: $col-7);
   }
+
+  @include mq-max($break-tablet) {
+    &::after {
+      content: '';
+      display: block;
+      @include wh(40px, 40px);
+      @include background('buttons/button-close-image.svg');
+      @include pos($bottom: 100px);
+    }
+  }
 }
