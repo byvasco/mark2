@@ -59,8 +59,7 @@ class PostTemplate extends Component {
   }
 
   render() {
-    const handleOpenImage = this.handleOpenImage;
-    const authors = this.post.authors;
+    const handleOpenImage = this.handleOpenImage;    
     
     return (
       <Layout className="post" name="post" title={this.post.title} image={this.post.cover}>
@@ -102,9 +101,7 @@ class PostTemplate extends Component {
               }
             })}
 
-            <div className="post-authors">
-              {parse(this.post.authors)}
-            </div>
+            {this.post.authors !== null && <div className="post-authors">{parse(this.post.authors)}</div>}
           </div>
         </div>
 
@@ -114,11 +111,11 @@ class PostTemplate extends Component {
 
             <ul className="actions">
               <li>
-                <a href={`https://www.facebook.com/sharer/sharer.php?u=${typeof window !== 'undefined' ? window.location.href : ''}`} onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" className="action facebook button-2">Facebook</a>
+                <a href={`https://www.facebook.com/sharer/sharer.php?u=${typeof window !== 'undefined' ? window.location.href : ''}`} onClick={() => {window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;}} className="action facebook button-2">Facebook</a>
               </li>
 
               <li>
-                <a href={`https://twitter.com/intent/tweet?text=Chuff, Photographer%20on%20MK2SWAG&amp;url=${typeof window !== 'undefined' ? window.location.href : ''}`} onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" className="action twitter button-2">Twitter</a>
+                <a href={`https://twitter.com/intent/tweet?text=Chuff, Photographer%20on%20MK2SWAG&amp;url=${typeof window !== 'undefined' ? window.location.href : ''}`} onClick={() => {window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;}} className="action twitter button-2">Twitter</a>
               </li>
             </ul>
           </div>
