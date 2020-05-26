@@ -6,10 +6,10 @@
 
 module.exports = {
   siteMetadata: {
-    title: `MARK2SWAG`,
-    titleTemplate: `%s – MARK2SWAG`,
+    title: `Mark2Media`,
+    titleTemplate: `%s – Mark2Media`,
     description: `Uniting passionates for the Mark2 Golfs and Jettas.`,
-    url: `https://mk2swag.com`,
+    url: `https://mark2.media`,
     image: ''
   },
 
