@@ -10,8 +10,13 @@
     align-items: center;
   }
 
-  .nav-main {
+  .logo {
     justify-self: center;
+    transition: all 60ms;
+
+    &:hover {
+      opacity: .8;
+    }
   }
 
   .nav-secondary {

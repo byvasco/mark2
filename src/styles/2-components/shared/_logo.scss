@@ -4,9 +4,9 @@
  */
 
 .logo {
-  @include replace-text('logos/logo.svg', 76px, 66px, $size: cover);
+  @include replace-text('logos/logo.svg', 97px, 66px, $size: cover);
 
   &-white {
-    @include replace-text('logos/logo-white.svg', 76px, 66px);
+    @include replace-text('logos/logo-white.svg', 83px, 56px);
   }
 }

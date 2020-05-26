@@ -62,7 +62,7 @@ const Home = ({ data }) => {
       <section className="promo-ig">
         <div className="container flex-col-center">
           <p className="section-title subtitle-2"><span>Tune in with us on Instagram</span> and join our community!</p>
-          <a href="https://www.instagram.com/mk2swag/" className="button-1 underline">@Mk2Swag</a>
+          <a href="https://www.instagram.com/mark2media/" className="button-1 underline">@Mark2Media</a>
           
           <div className="image-container">
             <Img fluid={imagePromoIg}/>
